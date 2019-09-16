@@ -5,33 +5,56 @@
 아두이노 코드
 
 void setup() {
+
   Serial.begin(9600);
+  
 }
+
 int a;  
+
 void loop() {
+
   a=analogRead(A0);
+  
   Serial.println(++a);
+  
   delay(500);
+  
 }
 
 
 3.프로세싱 코드
 
 import processing.serial.*;
+
 Serial p;
+
 void setup(){
+
   size(300,300);
+  
   p=new Serial(this,"COM4",9600);
+  
 }
+
 void draw(){
+
   if(p.available()>0){
-    String m=p.readString();
-    int a= int (m.trim());
-    println(a);
-    if(a>150)fill(250,0,0);
-    else     fill(0,250,0);
-    ellipse(150,150,200 ,200);
+  
+   String m=p.readString();
+    
+   int a= int (m.trim());
+   
+   println(a);
+   
+   if(a>150)fill(250,0,0);
+   
+   else     fill(0,250,0);
+   
+   ellipse(150,150,200 ,200);
+   
   }
+  
 }
 
 
